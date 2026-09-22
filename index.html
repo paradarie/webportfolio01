@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darie A. Para — Portfolio</title>
+
+<!-- Fonts: Fraunces for headings, Karla for body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #171310;          /* warm near-black */
+    --line: #2c251c;        /* subtle divider */
+    --text: #f2ebdf;        /* warm off-white */
+    --muted: #a99a87;       /* secondary text */
+    --accent: #ff8a3a;      /* orange */
+    --accent-dim: rgba(255, 138, 58, .35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Karla', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #1c130a; }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 64px 24px 44px; }
+
+  /* ---------- Header ---------- */
+  header { display: flex; align-items: center; gap: 30px; padding-bottom: 40px; }
+
+  /* Replace the src below with your own photo */
+  .photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    padding: 5px;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  h1 .dot { color: var(--accent); }
+
+  .role {
+    color: var(--accent);
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    margin-top: 10px;
+  }
+
+  .intro { color: var(--muted); font-size: .95rem; max-width: 46ch; margin-top: 8px; }
+
+  /* ---------- Sections ---------- */
+  section, .contact-block { border-top: 1px solid var(--line); padding: 36px 0; }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  h2::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
+
+  /* ---------- Skills (spec-sheet rows) ---------- */
+  .skills { display: grid; gap: 20px; }
+  .skill { display: grid; grid-template-columns: 180px 1fr; gap: 3px 24px; }
+  .skill-name { font-weight: 700; font-size: .98rem; }
+  .skill-name span {
+    color: var(--accent);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    margin-right: 9px;
+  }
+  .skill-desc { color: var(--muted); font-size: .93rem; }
+
+  /* ---------- Background ---------- */
+  .entry + .entry { margin-top: 32px; }
+  .tag {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 999px;
+    padding: 3px 12px;
+    margin-bottom: 12px;
+  }
+  .entry h3, .project h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .entry-meta { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+  .entry-desc { color: var(--muted); font-size: .93rem; margin-top: 10px; max-width: 56ch; }
+
+  /* ---------- Projects ---------- */
+  .project { display: flex; gap: 22px; }
+  .project + .project { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 26px; }
+  .project-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 1.35rem;
+    line-height: 1.25;
+    flex-shrink: 0;
+    width: 34px;
+  }
+  .project-desc { color: var(--muted); font-size: .93rem; margin-top: 8px; max-width: 56ch; }
+  .project-meta {
+    color: var(--muted);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    margin-top: 10px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contacts { display: flex; flex-wrap: wrap; gap: 16px 36px; }
+  .contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .95rem;
+  }
+  .contact svg { color: var(--accent); flex-shrink: 0; }
+  .contact:hover { color: var(--accent); }
+
+  .copyright {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    color: var(--muted);
+    font-size: .78rem;
+    letter-spacing: .04em;
+  }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 560px) {
+    .page { padding: 44px 20px 36px; }
+    header { flex-direction: column; align-items: flex-start; gap: 20px; padding-bottom: 32px; }
+    .skill { grid-template-columns: 1fr; }
+    .project { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <!-- ===== Header ===== -->
+  <header>
+    <!-- Replace this src with your own photo -->
+    <img class="photo" src="356699233006982809.jpg" alt="Portrait of Darie A. Para">
+    <div>
+      <h1>Darie A. Para<span class="dot">.</span></h1>
+      <p class="role">Web Portfolio</p>
+      <p class="intro">Student from ESSU-MAIN, BSIT 3rd-Year learning the world of technology.</p>
+    </div>
+  </header>
+
+  <!-- ===== Skills (rename these two) ===== -->
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">
+        <div class="skill-name"><span>01</span>Tools &amp; Workshop</div>
+        <p class="skill-desc">Github, VS Code, Stack Overflow</p>
+      </div>
+      <div class="skill">
+        <div class="skill-name"><span>02</span>Languages</div>
+        <p class="skill-desc">MySQL, Javascript, HTML, C++.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Background ===== -->
+  <section>
+    <h2>Background</h2>
+
+    <article class="entry">
+      <span class="tag">Education</span>
+      <h3>Bachelor of Science in Information Technology</h3>
+      <p class="entry-meta">Eastern Samar State University · 2024 – Present</p>
+      <p class="entry-desc">Focused on software, hardware, and networking systems.</p>
+    </article>
+
+    <article class="entry">
+      <span class="tag">Experience</span>
+      <h3>Web and Systems Development Projects</h3>
+      <p class="entry-meta">Company Name · 2025 – Present</p>
+      <p class="entry-desc">Built systems, create websites for BSIT practical studies</p>
+    </article>
+  </section>
+
+  <!-- ===== Projects (rename these two) ===== -->
+  <section>
+    <h2>Projects</h2>
+
+    <article class="project">
+      <span class="project-num">01</span>
+      <div>
+        <h3>Student Management System</h3>
+        <p class="project-desc">A simple  student managing where you can add, edit, delete students and their data.</p>
+        <p class="project-meta">C++</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="project-num">02</span>
+      <div>
+        <h3>Task Manager Sytem</h3>
+        <p class="project-desc">A manager system capable of controlling the tasks handled by the computer.</p>
+        <p class="project-meta">HTML · CSS · JavaScript</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== Contact (add your own links in the href) ===== -->
+  <div class="contact-block">
+    <h2>Contact</h2>
+    <div class="contacts">
+      <!-- Replace # with your GitHub profile URL -->
+      <a class="contact" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        <span>GitHub</span>
+      </a>
+      <!-- Replace # with your email (e.g. mailto:you@email.com) -->
+      <a class="contact" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>Email</span>
+      </a>
+      <!-- Replace # with your Facebook profile URL -->
+      <a class="contact" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <span>Facebook</span>
+      </a>
+    </div>
+  </div>
+
+  <p class="copyright">© 2025 Darie A. Para</p>
+
+</main>
+
+</body>
+</html>
